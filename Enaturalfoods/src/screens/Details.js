@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 
+
 const products = [
   {
     id: 1,
@@ -107,6 +108,10 @@ const Details = ({ navigation }) => {
     console.log(`${product.name} added to cart`);
   };
 
+  const handleLikeProduct = (product) => {
+    console.log(`${product.name} added to liked products`);
+  };
+
   return (
     <View style={styles.container}>
      
@@ -132,6 +137,7 @@ const Details = ({ navigation }) => {
               key={product.id} 
               product={product} 
               onAddToCart={() => handleAddToCart(product)} 
+               onLike={() => handleLikeProduct(product)}
             />
           ))
         ) : (

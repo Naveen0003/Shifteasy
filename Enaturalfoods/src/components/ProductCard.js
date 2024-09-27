@@ -1,10 +1,15 @@
-// components/ProductCard.js
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const ProductCard = ({ product, onAddToCart }) => {
-  
+const ProductCard = ({ product, onAddToCart, onLike }) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikePress = () => {
+    setIsLiked(!isLiked);
+    onLike(product); // Call the onLike prop function when liked
+  };
+
   return (
     <View style={styles.productItem}>
       <View style={styles.productContent}>
@@ -13,10 +18,23 @@ const ProductCard = ({ product, onAddToCart }) => {
           <Text style={styles.productName}>{product.name}</Text>
           <Text style={styles.productDescription}>{product.description}</Text>
           <Text style={styles.productPrice}>{product.price}</Text>
-          <TouchableOpacity style={styles.addToCartButton} onPress={onAddToCart}>
-            <Text style={styles.addToCartText}>Add to Cart</Text>
-            <Ionicons name="cart-outline" size={20} color="white" />
-          </TouchableOpacity>
+
+          <View style={styles.actionsRow}>
+            <TouchableOpacity style={styles.addToCartButton} onPress={onAddToCart}>
+              <Text style={styles.addToCartText}>Add to Cart</Text>
+              <Ionicons name="cart-outline" size={20} color="white" />
+            </TouchableOpacity>
+
+            {/* Like Icon */}
+            <TouchableOpacity onPress={handleLikePress}>
+              <Ionicons
+                name={isLiked ? 'heart' : 'heart-outline'}
+                size={24}
+                color={isLiked ? 'red' : '#777'}
+                style={styles.likeIcon}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -40,8 +58,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   productImage: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
     borderRadius: 10,
     marginRight: 15,
   },
@@ -63,19 +81,28 @@ const styles = StyleSheet.create({
     color: '#4CAF50',
     marginBottom: 10,
   },
+  actionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
   addToCartButton: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#4CAF50',
     paddingVertical: 10,
-    paddingHorizontal: 1,
+    paddingHorizontal: 10,
     borderRadius: 8,
-    width: 100,
   },
   addToCartText: {
     color: '#fff',
-    marginRight: 2,
+    marginRight: 5,
     fontSize: 15,
+  },
+  likeIcon: {
+    marginLeft: 5,
+    marginBottom:5,
   },
 });
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';  // For icons
+import { Ionicons } from '@expo/vector-icons';  
 import SocialMediaIcons from '../components/SocialMediaIcons';
 
 const backgroundImage = require('../../assets/images/larch-conifer-cone-branch-tree-40896.jpg');
@@ -9,7 +9,7 @@ const SignupScreen = ({ navigation }) => {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);  // State for toggling password visibility
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleSignup = () => {
     console.log('Full Name:', fullname);
@@ -20,9 +20,7 @@ const SignupScreen = ({ navigation }) => {
     setEmail('');
     setPassword('');
   };
-
-  // Toggle password visibility
-  const togglePasswordVisibility = () => {
+ const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
@@ -56,18 +54,17 @@ const SignupScreen = ({ navigation }) => {
           />
         </View>
 
-        {/* Password input with eye icon */}
+       
         <View style={styles.inputContainer}>
           <Ionicons name="lock-closed-outline" size={24} color="black" style={styles.icon} />
           <TextInput
             style={styles.input}
             placeholder="Password"
-            secureTextEntry={!isPasswordVisible}  // Conditionally show/hide password
-            value={password}
+            secureTextEntry={!isPasswordVisible}  
             onChangeText={setPassword}
             placeholderTextColor="black"
           />
-          {/* Eye icon to toggle password visibility */}
+         
           <TouchableOpacity onPress={togglePasswordVisibility}>
             <Ionicons name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'} size={24} color="black" />
           </TouchableOpacity>
