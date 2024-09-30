@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, ScrollView, TextInput } from 'react-native';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
+ 
 
 
 const products = [
@@ -113,6 +114,8 @@ const Details = ({ navigation }) => {
   };
 
   return (
+
+    
     <View style={styles.container}>
      
       <Header navigation={navigation} onSearchToggle={() => setSearchVisible(!searchVisible)} />
@@ -154,7 +157,7 @@ const Details = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'lightyellow',
   },
   searchBar: {
     paddingHorizontal: 20,

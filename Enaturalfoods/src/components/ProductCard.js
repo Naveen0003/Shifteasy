@@ -10,6 +10,22 @@ const ProductCard = ({ product, onAddToCart, onLike }) => {
     onLike(product); // Call the onLike prop function when liked
   };
 
+  // Function to render the stars based on the product rating
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <Ionicons
+          key={i}
+          name={i <= rating ? 'star' : 'star-outline'}
+          size={18}
+          color={i <= rating ? '#FFD700' : '#ccc'}
+        />
+      );
+    }
+    return stars;
+  };
+
   return (
     <View style={styles.productItem}>
       <View style={styles.productContent}>
@@ -18,6 +34,13 @@ const ProductCard = ({ product, onAddToCart, onLike }) => {
           <Text style={styles.productName}>{product.name}</Text>
           <Text style={styles.productDescription}>{product.description}</Text>
           <Text style={styles.productPrice}>{product.price}</Text>
+
+          {/* Display star rating on the right side */}
+          <View style={styles.ratingRow}>
+            <View style={styles.starsContainer}>
+              {renderStars(product.rating)}
+            </View>
+          </View>
 
           <View style={styles.actionsRow}>
             <TouchableOpacity style={styles.addToCartButton} onPress={onAddToCart}>
@@ -81,6 +104,14 @@ const styles = StyleSheet.create({
     color: '#4CAF50',
     marginBottom: 10,
   },
+  ratingRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 5,
+  },
+  starsContainer: {
+    flexDirection: 'row',
+  },
   actionsRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -102,8 +133,9 @@ const styles = StyleSheet.create({
   },
   likeIcon: {
     marginLeft: 5,
-    marginBottom:5,
+    marginBottom: 5,
   },
 });
 
 export default ProductCard;
+  

@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 const Header = ({ navigation, onSearchToggle }) => {
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>Enaturalfoods!!!</Text>
+      <Text style={styles.headerTitle}>E-naturalfoods!!!</Text>
       <View style={styles.headerIcons}>
         <TouchableOpacity onPress={onSearchToggle}>
           <Ionicons name="search-outline" size={25} color="white" style={styles.iconMargin} />
@@ -27,12 +27,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 13,
-    paddingHorizontal: 20,
+    paddingVertical: 30,
+    paddingHorizontal: 30,
     backgroundColor: '#4CAF50',
+    borderRadius:20,
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: 'bold',
     color: '#fff',
     paddingTop:30,
