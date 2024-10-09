@@ -1,107 +1,145 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';  
+import { View, TextInput, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import SocialMediaIcons from '../components/SocialMediaIcons';
 
-const backgroundImage = require('../../assets/images/larch-conifer-cone-branch-tree-40896.jpg');
+
+const headerImage = require('../../assets/images/987eccdc-f81e-4c50-a566-03910355abde.jpeg'); 
 
 const SignupScreen = ({ navigation }) => {
-  const [fullname, setFullname] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [city, setCity] = useState('');
   const [password, setPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleSignup = () => {
-    console.log('Full Name:', fullname);
+    console.log('First Name:', firstName);
+    console.log('Last Name:', lastName);
     console.log('Email:', email);
+    console.log('Phone:', phone);
+    console.log('City:', city);
     console.log('Password:', password);
 
-    setFullname('');
+   
+    setFirstName('');
+    setLastName('');
     setEmail('');
+    setPhone('');
+    setCity('');
     setPassword('');
   };
- const togglePasswordVisibility = () => {
+
+  const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
   return (
-    <ImageBackground source={backgroundImage} style={styles.background}>
-      <View style={styles.container}>
-        <Text style={styles.heading}>Sign Up</Text>
+    <View style={styles.container}>
+      <Image
+        source={headerImage}
+        style={styles.headerImage}
+        resizeMode="contain"
+      />
 
-       
-        <View style={styles.inputContainer}>
-          <Ionicons name="person-outline" size={24} color="black" style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder="Full Name"
-            value={fullname}
-            onChangeText={setFullname}
-            placeholderTextColor="black"
-          />
-        </View>
-
-       
-        <View style={styles.inputContainer}>
-          <Ionicons name="mail-outline" size={24} color="black" style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            keyboardType="email-address"
-            value={email}
-            onChangeText={setEmail}
-            placeholderTextColor="black"
-          />
-        </View>
-
-       
-        <View style={styles.inputContainer}>
-          <Ionicons name="lock-closed-outline" size={24} color="black" style={styles.icon} />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={!isPasswordVisible}  
-            onChangeText={setPassword}
-            placeholderTextColor="black"
-          />
-         
-          <TouchableOpacity onPress={togglePasswordVisibility}>
-            <Ionicons name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'} size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
-          <Text style={styles.signupButtonText}>Sign Up</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.loginLink} onPress={() => navigation.navigate('Login')}>
-          Already have an account? Login
-        </Text>
-
-        {/* Social media icons */}
-        <SocialMediaIcons />
+      <View style={styles.inputContainer}>
+        <Ionicons name="person-outline" size={24} color="black" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="First Name"
+          value={firstName}
+          onChangeText={setFirstName}
+          placeholderTextColor="black"
+        />
       </View>
-    </ImageBackground>
+
+      <View style={styles.inputContainer}>
+        <Ionicons name="person-outline" size={24} color="black" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Last Name"
+          value={lastName}
+          onChangeText={setLastName}
+          placeholderTextColor="black"
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Ionicons name="mail-outline" size={24} color="black" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+          placeholderTextColor="black"
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Ionicons name="call-outline" size={24} color="black" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Phone Number"
+          keyboardType="phone-pad"
+          value={phone}
+          onChangeText={setPhone}
+          placeholderTextColor="black"
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Ionicons name="location-outline" size={24} color="black" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="City"
+          value={city}
+          onChangeText={setCity}
+          placeholderTextColor="black"
+        />
+      </View>
+
+      <View style={styles.inputContainer}>
+        <Ionicons name="lock-closed-outline" size={24} color="black" style={styles.icon} />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={!isPasswordVisible}  
+          value={password}
+          onChangeText={setPassword}
+          placeholderTextColor="black"
+        />
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <Ionicons name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'} size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={styles.signupButton} onPress={handleSignup}>
+        <Text style={styles.signupButtonText}>Sign Up</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.loginLink} onPress={() => navigation.navigate('Login')}>
+        Already have an account? Login
+      </Text>
+
+      <SocialMediaIcons />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: 'center',
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 40,
-    borderRadius: 10,
+    backgroundColor: '#F6F6F6', 
   },
-  heading: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
-    marginTop: 140,
+  headerImage: {
+    width: '100%',
+    height: 100, 
+    marginBottom: 20, 
   },
   inputContainer: {
     flexDirection: 'row',
@@ -126,7 +164,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
-    
   },
   signupButtonText: {
     color: 'white',

@@ -7,16 +7,16 @@ const SocialMediaIcons = () => {
   return (
     <View style={styles.socialMediaFooter}>
       <TouchableOpacity style={styles.iconButton}>
-        <FontAwesome name="facebook" size={25} color="#3b5998" />
+        <FontAwesome name="facebook" size={30} color="#3b5998" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.iconButton}>
-        <FontAwesome name="instagram" size={25} color="#C13584" />
+        <FontAwesome name="instagram" size={30} color="#C13584" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.iconButton}>
-        <FontAwesome name="youtube" size={25} color="#FF0000" />
+        <FontAwesome name="youtube" size={30} color="#FF0000" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.iconButton}>
-        <FontAwesome name="google" size={25} color="#db4a39" />
+        <FontAwesome name="google" size={30} color="#db4a39" />
       </TouchableOpacity>
     </View>
   );

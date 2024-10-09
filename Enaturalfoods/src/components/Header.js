@@ -1,22 +1,36 @@
-// components/Header.js
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const Header = ({ navigation, onSearchToggle }) => {
+const Header = ({ navigation }) => {
+  const [searchText, setSearchText] = useState('');
+
   return (
     <View style={styles.header}>
-      <Text style={styles.headerTitle}>E-naturalfoods!!!</Text>
-      <View style={styles.headerIcons}>
-        <TouchableOpacity onPress={onSearchToggle}>
-          <Ionicons name="search-outline" size={25} color="white" style={styles.iconMargin} />
+      <View style={styles.profileContainer}>
+        <Image 
+          source={{ uri: 'https://w7.pngwing.com/pngs/4/736/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon-thumbnail.png' }} 
+          style={styles.avatar}
+        />
+        <View style={styles.profileDetails}>
+          <Text style={styles.profileName}>Priya</Text>
+          <Text style={styles.locationText}>Chennai</Text>
+        </View>
+        {/* Notification Icon on the Right Side */}
+        <TouchableOpacity onPress={() => navigation.navigate('Notifications')} style={styles.iconContainer}>
+          <Ionicons name="notifications-outline" size={25} color="#1E5703" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
-          <Ionicons name="notifications-outline" size={25} color="white" style={styles.iconMargin} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-          <Ionicons name="cart-outline" size={25} color="white"  style={styles.iconMargin} />
-        </TouchableOpacity>
+      </View>
+
+      <View style={styles.searchContainer}>
+        <Ionicons name="search-outline" size={20} color="#1E5703" style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchBox}
+          placeholder="Search Your category"
+          placeholderTextColor="black"
+          value={searchText}
+          onChangeText={(text) => setSearchText(text)}
+        />
       </View>
     </View>
   );
@@ -24,30 +38,58 @@ const Header = ({ navigation, onSearchToggle }) => {
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 30,
-    paddingHorizontal: 30,
-    backgroundColor: '#4CAF50',
-    borderRadius:20,
+    paddingVertical: 10,
+    paddingTop: 50,
+    paddingHorizontal: 15,
+    backgroundColor: '#D0F3C4',
   },
-  headerTitle: {
-    fontSize: 34,
+  profileContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'space-between', 
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginRight: 10,
+  },
+  profileDetails: {
+    marginRight: 200,
+  },
+  profileName: {
+    fontSize: 16,
     fontWeight: 'bold',
-    color: '#fff',
-    paddingTop:30,
-   
+    color: 'black',
   },
-  headerIcons: {
+  locationText: {
+    color: 'black',
+    fontSize: 14,
+  },
+  searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft:50,
+    backgroundColor: '#fff',
+    borderRadius: 40,
+    width: '90%', 
+    alignSelf: 'center', 
+    marginTop: 30, 
+    paddingHorizontal: 10,
+    paddingVertical: 1, 
   },
-  iconMargin: {
-    marginRight: 15,
-    paddingTop: 30,
-    
+  searchIcon: {
+    marginRight: 10,
+    color: '#1E5703',
+  },
+  searchBox: {
+    flex: 1,
+    color: 'black',
+    paddingHorizontal: 1,
+    paddingVertical: 7,
+  },
+  iconContainer: {
+    paddingLeft: 1, 
   },
 });
 

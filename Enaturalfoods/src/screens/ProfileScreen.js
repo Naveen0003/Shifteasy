@@ -8,13 +8,13 @@ const ProfileScreen = () => {
     name: 'John Doe',
     email: 'johndoe@example.com',
     phone: '+123 456 789',
-    avatar: 'https://i.pravatar.cc/300', // You can replace with a real user image
+    avatar: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg', 
     
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Profile Header */}
+      
       <View style={styles.header}>
         <Image source={{ uri: user.avatar }} style={styles.avatar} />
         <Text style={styles.name}>{user.name}</Text>
@@ -22,54 +22,56 @@ const ProfileScreen = () => {
         <Text style={styles.phone}>{user.phone}</Text>
       </View>
 
-      {/* Profile Options */}
+    
       <View style={styles.body}>
         <TouchableOpacity style={styles.option}>
-          <Ionicons name="ios-person" size={24} color="#4CAF50" />
+          <Ionicons  size={24} color="#4CAF50" />
           <Text style={styles.optionText}>Edit Profile</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.option}>
-          <Ionicons name="ios-settings" size={24} color="#4CAF50" />
+          <Ionicons  size={24} color="#4CAF50" />
           <Text style={styles.optionText}>Settings</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.option}>
-          <Ionicons name="ios-heart" size={24} color="#4CAF50" />
+          <Ionicons size={24} color="#4CAF50" />
           <Text style={styles.optionText}>Favorites</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.option}>
-          <Ionicons name="ios-cart" size={24} color="#4CAF50" />
+          <Ionicons  size={24} color="#4CAF50" />
           <Text style={styles.optionText}>Orders</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.option}>
-          <Ionicons name="ios-help-circle" size={24} color="#4CAF50" />
+          <Ionicons  size={24} color="#4CAF50" />
           <Text style={styles.optionText}>Help & Support</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Logout Button */}
+     
       <TouchableOpacity style={styles.logoutButton}>
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
+      
     </ScrollView>
     
-  );navigation.navigate('Profile'); 
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#F5F5F5',
-    paddingVertical: 20,
+    paddingVertical: 1,
     alignItems: 'center',
+    backgroundColor: 'lightyellow',
   },
   header: {
     backgroundColor: '#4CAF50',
     width: '100%',
-    paddingTop: 5,
+    paddingTop: 10,
     alignItems: 'center',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 2,
     borderColor: '#fff',
-    marginBottom: 15,
+    marginBottom: 1,
   },
   name: {
     fontSize: 22,
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
+    padding: 10,
     marginVertical: 10,
     borderRadius: 10,
     shadowColor: '#000',
