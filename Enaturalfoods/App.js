@@ -12,6 +12,11 @@ import FavoritesScreen from './src/screens/FavoritesScreen';
 import BestSelling from './src/components/bestSellingProducts';
 import ProductDetails from './src/screens/ProductDetails';
 import ResetPasswordScreen from './src/screens/ResetPasswordScreen';
+import ChangePasswordScreen from './src/screens/ChangePasswordScreen';
+import OrdersScreen from './src/screens/OrdersScreen';
+import OrderSummaryScreen from './src/screens/OrderSummaryScreen';
+import ChatScreen from './src/screens/ChatScreen';
+import NotificationsScreen from './src/screens/NotificationsScreen';
 
 
 const Stack = createStackNavigator();
@@ -26,10 +31,15 @@ export default function App() {
         <Stack.Screen name="Details"   options={{ headerShown: false }} component={Details} />
         <Stack.Screen name="Cart"  options={{ headerShown: false }} component={CartScreen}/>
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Favorites" component={FavoritesScreen} /> 
+        <Stack.Screen name="Favorites"  options={{ headerShown: false }} component={FavoritesScreen} /> 
         <Stack.Screen name="BestSelling" component={BestSelling} />
         <Stack.Screen name="ProductDetails"  options={{ headerShown: false }} component={ProductDetails} />
         <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} /> 
+        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+        <Stack.Screen name="Orders" component={OrdersScreen} />
+        <Stack.Screen name="OrderSummary" component={OrderSummaryScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'Help & Support' }} />
+        <Stack.Screen name="Notifications" component={NotificationsScreen} />
         
       </Stack.Navigator>
     </NavigationContainer>

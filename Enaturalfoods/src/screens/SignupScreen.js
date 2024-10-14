@@ -121,7 +121,7 @@ const SignupScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <Text style={styles.loginLink} onPress={() => navigation.navigate('Login')}>
-        Already have an account? Login
+        Already have an account? <Text style={styles.logintext}>Login</Text>
       </Text>
 
       <SocialMediaIcons />
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: '#f0f0f0',
     borderBottomWidth: 1,
     borderBottomColor: 'gray',
     marginBottom: 15,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   signupButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#1E5703',
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -174,6 +174,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: 'black',
     textAlign: 'center',
+  },
+  logintext:{
+    color:'#1E5703',
+    fontWeight: 'bold',
   },
 });
 

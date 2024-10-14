@@ -24,19 +24,13 @@ const WelcomeScreen = ({ navigation }) => {
       source={backgroundImage} 
       style={styles.background}
     >
-      <View style={styles.container}>
-        {/* <Text style={styles.title}>Welcome to!!!</Text>
-        <Text style={styles.brandName}>
-          <Text style={styles.brandLetter}>E</Text> NaturalFoods
-        </Text> */}
-        
-        <TouchableOpacity 
+     <TouchableOpacity 
           style={styles.button} 
           onPress={() => navigation.navigate('Login')}  
         >
           <Text style={styles.buttonText}>Let's Go</Text>
         </TouchableOpacity>
-      </View>
+     
     </ImageBackground>
   );
 };
@@ -47,31 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // container: {
-  //   borderRadius: 15,
-  //   alignItems: 'center',
-  // },
-  // title: {
-  //   paddingTop: 400,
-  //   fontSize: 28,
-  //   fontWeight: '600',
-  //   color: 'white',
-  //   textAlign: 'center',
-  //   fontFamily: 'Montserrat_400Regular', 
-  // },
-  // brandName: {
-  //   fontSize: 40,
-  //   fontWeight: '300',
-  //   color: 'white',
-  //   textAlign: 'center',
-  //   marginBottom: 1,
-  //   fontFamily: 'PlayfairDisplay_700Bold', 
-  // },
-  // brandLetter: {
-  //   fontSize: 70,
-  //   fontWeight: '500',
-  //   color: '#4CAF50',
-  // },
+
   button: {
     backgroundColor: '#fff',
     paddingVertical: 10,

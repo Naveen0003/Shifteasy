@@ -16,7 +16,7 @@ const Header = ({ navigation }) => {
           <Text style={styles.profileName}>Priya</Text>
           <Text style={styles.locationText}>Chennai</Text>
         </View>
-        {/* Notification Icon on the Right Side */}
+ 
         <TouchableOpacity onPress={() => navigation.navigate('Notifications')} style={styles.iconContainer}>
           <Ionicons name="notifications-outline" size={25} color="#1E5703" />
         </TouchableOpacity>
@@ -30,6 +30,7 @@ const Header = ({ navigation }) => {
           placeholderTextColor="black"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
+          
         />
       </View>
     </View>
@@ -87,6 +88,7 @@ const styles = StyleSheet.create({
     color: 'black',
     paddingHorizontal: 1,
     paddingVertical: 7,
+
   },
   iconContainer: {
     paddingLeft: 1, 

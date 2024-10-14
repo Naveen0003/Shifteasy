@@ -9,10 +9,12 @@ const ResetPasswordScreen = ({ navigation }) => {
   const handleResetPassword = () => {
     console.log('Reset password for:', email);
     setEmail('');
+    navigation.navigate('ChangePassword');
    
   };
 
   return (
+    
     <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.heading}>Reset Password</Text>

@@ -2,19 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const ProfileScreen = () => {
-    
+const ProfileScreen = ({ navigation }) => {
   const user = {
     name: 'John Doe',
     email: 'johndoe@example.com',
     phone: '+123 456 789',
-    avatar: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg', 
-    
+    avatar: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg',
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      
       <View style={styles.header}>
         <Image source={{ uri: user.avatar }} style={styles.avatar} />
         <Text style={styles.name}>{user.name}</Text>
@@ -22,54 +19,58 @@ const ProfileScreen = () => {
         <Text style={styles.phone}>{user.phone}</Text>
       </View>
 
-    
       <View style={styles.body}>
         <TouchableOpacity style={styles.option}>
-          <Ionicons  size={24} color="#4CAF50" />
+          <Ionicons name="person" size={24} color="#1E5703" />
           <Text style={styles.optionText}>Edit Profile</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.option}>
-          <Ionicons  size={24} color="#4CAF50" />
+          <Ionicons name="settings" size={24} color="#1E5703" />
           <Text style={styles.optionText}>Settings</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.option}>
-          <Ionicons size={24} color="#4CAF50" />
+        <TouchableOpacity style={styles.option}
+        onPress={() => navigation.navigate('Favorites')}
+        >
+          <Ionicons name="heart" size={24} color="#1E5703" />
           <Text style={styles.optionText}>Favorites</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.option}>
-          <Ionicons  size={24} color="#4CAF50" />
+        <TouchableOpacity 
+          style={styles.option} 
+          onPress={() => navigation.navigate('Orders')}
+        >
+          <Ionicons name="list" size={24} color="#1E5703" />
           <Text style={styles.optionText}>Orders</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.option}>
-          <Ionicons  size={24} color="#4CAF50" />
+        <TouchableOpacity style={styles.option}
+        onPress={() => navigation.navigate('Chat')}
+        >
+          <Ionicons name="help-circle" size={24} color="#1E5703" />
           <Text style={styles.optionText}>Help & Support</Text>
         </TouchableOpacity>
       </View>
 
-     
       <TouchableOpacity style={styles.logoutButton}>
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
-      
     </ScrollView>
-    
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#F6F6F6',
     paddingVertical: 1,
     alignItems: 'center',
-    backgroundColor: 'lightyellow',
+    backgroundColor: '#F6F6F6',
   },
   header: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#D0F3C4',
     width: '100%',
     paddingTop: 10,
     alignItems: 'center',
@@ -81,25 +82,25 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: '#fff',
+    borderColor: '#333',
     marginBottom: 1,
   },
   name: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#333',
   },
   email: {
     fontSize: 16,
-    color: '#fff',
+    color: '#333',
     marginVertical: 5,
   },
   phone: {
     fontSize: 16,
-    color: '#fff',
+    color: '#333',
   },
   body: {
-    marginTop: 20,
+    marginTop: 15,
     width: '90%',
   },
   option: {
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 8,
-    marginTop: 30,
-    width: '90%',
+    marginTop: 20,
+    width: '50%',
     alignItems: 'center',
   },
   logoutText: {

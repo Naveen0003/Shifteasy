@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 const Footer = ({ navigation }) => {
   return (
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Details')}>
         <Ionicons name="home-outline" size={30} color="#1E5703" />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Favorites')}>
@@ -24,7 +24,7 @@ const Footer = ({ navigation }) => {
         
     </View>
   );
-};
+};  
 
 const styles = StyleSheet.create({
   footer: {

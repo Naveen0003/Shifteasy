@@ -12,8 +12,7 @@ const HomeScreen = ({ navigation }) => {
         <Header navigation={navigation} />
         <CategoryScroll />
         <BestSelling />
-        
-      </ScrollView>
+        </ScrollView>
       <Footer navigation={navigation} />
     </View>
   );

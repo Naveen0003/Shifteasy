@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Importing icon library
+import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const CartScreen = ({ navigation }) => {
   const [quantity1, setQuantity1] = useState(2);
@@ -28,81 +28,86 @@ const CartScreen = ({ navigation }) => {
         <Text style={styles.headerText}>Cart</Text>
       </View>
 
-      <View style={styles.productContainer}>
-        <Image 
-          source={require('../../assets/images/images (2).jpg')} 
-          style={styles.productImage}
-        />
-        <View style={styles.productDetails}>
-          <Text style={styles.productName}>Rice</Text>
-          <Text style={styles.productPrice}>$15.30</Text>
-          <View style={styles.quantityContainer}>
-            <TouchableOpacity onPress={decrementQuantity1} style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.quantityText}>{quantity1}</Text>
-            <TouchableOpacity onPress={incrementQuantity1} style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>+</Text>
-            </TouchableOpacity>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.productContainer}>
+          <Image 
+            source={require('../../assets/images/images (2).jpg')} 
+            style={styles.productImage}
+          />
+          <View style={styles.productDetails}>
+            <Text style={styles.productName}>Rice</Text>
+            <Text style={styles.productPrice}>$15.30</Text>
+            <View style={styles.quantityContainer}>
+              <TouchableOpacity onPress={decrementQuantity1} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{quantity1}</Text>
+              <TouchableOpacity onPress={incrementQuantity1} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>+</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <TouchableOpacity style={styles.removeButton}>
+            <Text style={styles.removeButtonText}>✕</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.productContainer}>
+          <Image 
+            source={require('../../assets/images/premium-horsegram-packaging.jpg')} 
+            style={styles.productImage}
+          />
+          <View style={styles.productDetails}>
+            <Text style={styles.productName}>Kollu</Text>
+            <Text style={styles.productPrice}>$12.00</Text>
+            <View style={styles.quantityContainer}>
+              <TouchableOpacity onPress={decrementQuantity2} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{quantity2}</Text>
+              <TouchableOpacity onPress={incrementQuantity2} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>+</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <TouchableOpacity style={styles.removeButton}>
+            <Text style={styles.removeButtonText}>✕</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.promoCodeContainer}>
+          <TextInput style={styles.promoCodeInput} placeholder="Promo Code" />
+          <TouchableOpacity style={styles.applyButton}>
+            <Text style={styles.applyButtonText}>Apply</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.summaryContainer}>
+          <View style={styles.summaryRow}>
+            <Text style={styles.summaryText}>Subtotal:</Text>
+            <Text style={styles.summaryValue}>${subtotal} USD</Text>
+          </View>
+          <View style={styles.summaryRow}>
+            <Text style={styles.summaryText}>Tax and Fees:</Text>
+            <Text style={styles.summaryValue}>${tax} USD</Text>
+          </View>
+          <View style={styles.summaryRow}>
+            <Text style={styles.summaryText}>Delivery:</Text>
+            <Text style={styles.summaryValue}>${delivery.toFixed(2)} USD</Text>
+          </View>
+          <View style={styles.summaryRow}>
+            <Text style={styles.totalText}>Total:</Text>
+            <Text style={styles.totalValue}>${total} USD</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.removeButton}>
-          <Text style={styles.removeButtonText}>✕</Text>
+      </ScrollView>
+
+      
+      <View style={styles.fixedButtonContainer}>
+        <TouchableOpacity style={styles.checkoutButton}>
+          <Text style={styles.checkoutButtonText}>CHECKOUT</Text>
         </TouchableOpacity>
       </View>
-
-      <View style={styles.productContainer}>
-        <Image 
-          source={require('../../assets/images/premium-horsegram-packaging.jpg')} 
-          style={styles.productImage}
-        />
-        <View style={styles.productDetails}>
-          <Text style={styles.productName}>Kollu</Text>
-          <Text style={styles.productPrice}>$12.00</Text>
-          <View style={styles.quantityContainer}>
-            <TouchableOpacity onPress={decrementQuantity2} style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.quantityText}>{quantity2}</Text>
-            <TouchableOpacity onPress={incrementQuantity2} style={styles.quantityButton}>
-              <Text style={styles.quantityButtonText}>+</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <TouchableOpacity style={styles.removeButton}>
-          <Text style={styles.removeButtonText}>✕</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.promoCodeContainer}>
-        <TextInput style={styles.promoCodeInput} placeholder="Promo Code" />
-        <TouchableOpacity style={styles.applyButton}>
-          <Text style={styles.applyButtonText}>Apply</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.summaryContainer}>
-        <View style={styles.summaryRow}>
-          <Text style={styles.summaryText}>Subtotal:</Text>
-          <Text style={styles.summaryValue}>${subtotal} USD</Text>
-        </View>
-        <View style={styles.summaryRow}>
-          <Text style={styles.summaryText}>Tax and Fees:</Text>
-          <Text style={styles.summaryValue}>${tax} USD</Text>
-        </View>
-        <View style={styles.summaryRow}>
-          <Text style={styles.summaryText}>Delivery:</Text>
-          <Text style={styles.summaryValue}>${delivery.toFixed(2)} USD</Text>
-        </View>
-        <View style={styles.summaryRow}>
-          <Text style={styles.totalText}>Total:</Text>
-          <Text style={styles.totalValue}>${total} USD</Text>
-        </View>
-      </View>
-
-      <TouchableOpacity style={styles.checkoutButton}>
-        <Text style={styles.checkoutButtonText}>CHECKOUT</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -112,14 +117,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F9F9F9',
   },
+  scrollContent: {
+    paddingBottom: 100, 
+  },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 50,
-    paddingHorizontal: 15,
-    marginBottom: 20,
-    position: 'relative',
     paddingVertical: 10,
     paddingTop: 60,
     paddingHorizontal: 15,
@@ -128,8 +132,7 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     left: 10,
-    top: '240%',
-    transform: [{ translateY: -12 }],
+    top:65,
   },
   headerText: {
     fontSize: 24,
@@ -140,23 +143,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#FFF',
     borderRadius: 10,
+    top:20,
     padding: 15,
     marginBottom: 20,
+    marginHorizontal: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 5,
-    marginRight:15,
-    marginLeft:15,
-    
   },
   productImage: {
     width: 60,
     height: 60,
     borderRadius: 10,
     marginRight: 15,
-    marginTop:10,
   },
   productDetails: {
     flex: 1,
@@ -200,8 +201,7 @@ const styles = StyleSheet.create({
   promoCodeContainer: {
     flexDirection: 'row',
     marginVertical: 30,
-    marginRight:15,
-    marginLeft:15,
+    marginHorizontal: 15,
   },
   promoCodeInput: {
     flex: 1,
@@ -219,12 +219,10 @@ const styles = StyleSheet.create({
   applyButtonText: {
     color: '#FFF',
     fontWeight: 'bold',
-    marginTop: 3,
   },
   summaryContainer: {
     marginBottom: 20,
-    marginRight:15,
-    marginLeft:15,
+    marginHorizontal: 15,
   },
   summaryRow: {
     flexDirection: 'row',
@@ -249,14 +247,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
   },
+  fixedButtonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    width: '100%',
+    paddingHorizontal: 15,
+    paddingBottom: 20,
+    backgroundColor: '#F9F9F9',
+  },
   checkoutButton: {
     backgroundColor: '#1E5703',
     paddingVertical: 15,
     borderRadius: 30,
     alignItems: 'center',
-    marginTop: 50,
-    marginRight:15,
-    marginLeft:15,
   },
   checkoutButtonText: {
     color: '#FFF',

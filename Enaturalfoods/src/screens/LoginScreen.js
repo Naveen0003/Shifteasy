@@ -92,9 +92,7 @@ const styles = StyleSheet.create({
     width: 150, 
     height: 150, 
     marginBottom: 30,
-   
-    
-  },
+   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
